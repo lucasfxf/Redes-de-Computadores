@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}Conversão de bases{% endblock %}
+
+{% block content %}
+<section class="container section">
+    <h1>Conversor de Bases</h1>
+
+    <div class="grid-conversoes">
+        <div class="card card-decimal">
+            <h3>Decimal</h3>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="decimal_binario">
+                <label for="decimal-binario">Para Binário</label>
+                <input type="text" id="decimal-binario" name="valor" placeholder="Ex.: 25">
+                <button type="submit">Converter</button>
+            </form>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="decimal_hexadecimal">
+                <label for="decimal-hex">Para Hexadecimal</label>
+                <input type="text" id="decimal-hex" name="valor" placeholder="Ex.: 255">
+                <button type="submit">Converter</button>
+            </form>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="decimal_octal">
+                <label for="decimal-octal">Para Octal</label>
+                <input type="text" id="decimal-octal" name="valor" placeholder="Ex.: 64">
+                <button type="submit">Converter</button>
+            </form>
+        </div>
+
+        <div class="card card-binario">
+            <h3>Binário</h3>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="binario_decimal">
+                <label for="binario-decimal">Para Decimal</label>
+                <input type="text" id="binario-decimal" name="valor" placeholder="Ex.: 1010">
+                <button type="submit">Converter</button>
+            </form>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="binario_hexadecimal">
+                <label for="binario-hex">Para Hexadecimal</label>
+                <input type="text" id="binario-hex" name="valor" placeholder="Ex.: 110111">
+                <button type="submit">Converter</button>
+            </form>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="binario_octal">
+                <label for="binario-octal">Para Octal</label>
+                <input type="text" id="binario-octal" name="valor" placeholder="Ex.: 1010">
+                <button type="submit">Converter</button>
+            </form>
+        </div>
+
+        <div class="card card-hexadecimal">
+            <h3>Hexadecimal</h3>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="hexadecimal_binario">
+                <label for="hex-binario">Para Binário</label>
+                <input type="text" id="hex-binario" name="valor" placeholder="Ex.: 1A">
+                <button type="submit">Converter</button>
+            </form>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="hexadecimal_decimal">
+                <label for="hex-decimal">Para Decimal</label>
+                <input type="text" id="hex-decimal" name="valor" placeholder="Ex.: 1F">
+                <button type="submit">Converter</button>
+            </form>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="hexadecimal_octal">
+                <label for="hex-octal">Para Octal</label>
+                <input type="text" id="hex-octal" name="valor" placeholder="Ex.: 2A">
+                <button type="submit">Converter</button>
+            </form>
+        </div>
+
+        <div class="card card-octal">
+            <h3>Octal</h3>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="octal_binario">
+                <label for="octal-binario">Para Binário</label>
+                <input type="text" id="octal-binario" name="valor" placeholder="Ex.: 17">
+                <button type="submit">Converter</button>
+            </form>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="octal_decimal">
+                <label for="octal-decimal">Para Decimal</label>
+                <input type="text" id="octal-decimal" name="valor" placeholder="Ex.: 77">
+                <button type="submit">Converter</button>
+            </form>
+            <form method="post" action="{{ url_for('conversao') }}">
+                <input type="hidden" name="conversion" value="octal_hexadecimal">
+                <label for="octal-hex">Para Hexadecimal</label>
+                <input type="text" id="octal-hex" name="valor" placeholder="Ex.: 25">
+                <button type="submit">Converter</button>
+            </form>
+        </div>
+    </div>
+
+    {% if result or error %}
+    <div class="modal show" id="resultadoModal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button class="close-btn" type="button" aria-label="Fechar" onclick="closeModal()">×</button>
+            {% if error %}
+                <h3>Erro na conversão</h3>
+                <p>{{ error }}</p>
+            {% else %}
+                <h3>{{ result.titulo }}</h3>
+                <p><strong>Valor original:</strong> {{ result.valor_original }}</p>
+                <p><strong>Resultado:</strong> {{ result.valor_convertido }}</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</section>
+
+<script>
+    function closeModal() {
+        const modal = document.getElementById('resultadoModal');
+        if (modal) modal.style.display = 'none';
+    }
+</script>
+{% endblock %}

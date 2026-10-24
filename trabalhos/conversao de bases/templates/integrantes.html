@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Integrantes{% endblock %}
+
+{% block content %}
+<section class="container section">
+    <h1>Integrantes do grupo</h1>
+    <div class="team-grid">
+        {% for membro in membros %}
+        <div class="team-card">
+            <h2>{{ membro.nome }}</h2>
+            <p>{{ membro.funcao }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

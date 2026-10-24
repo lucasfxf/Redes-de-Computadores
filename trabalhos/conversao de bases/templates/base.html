@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Conversão de Bases{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav container">
+            <div class="logo">Bases Numéricas</div>
+            <div class="menu">
+                <a href="{{ url_for('index') }}">Início</a>
+                <a href="{{ url_for('integrantes') }}">Integrantes</a>
+                <a href="{{ url_for('conversao') }}">Conversões</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

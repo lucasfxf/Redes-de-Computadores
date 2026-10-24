@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Início{% endblock %}
+
+{% block content %}
+<section class="hero container">
+    <div class="hero-text">
+        <h1>Conversão de Bases Numéricas</h1>
+        <p>
+            As bases numéricas são fundamentais para a computação, eletrônica e matemática, pois
+            representam a mesma quantidade de maneira diferente dependendo do sistema utilizado.
+            O sistema decimal é o mais comum no cotidiano, mas o binário é essencial para computadores,
+            o hexadecimal é usado em programação e endereço de memória e o octal também aparece em
+            sistemas legados e em alguns contextos de computação.
+        </p>
+        <p>
+            Entender essas conversões permite interpretar dados, desenvolver software, entender redes,
+            protocolos e até linguagens de programação com maior clareza.
+        </p>
+    </div>
+    <div class="hero-card">
+        <h2>Principais bases</h2>
+        <ul>
+            <li><strong>Decimal:</strong> base 10, usada no dia a dia.</li>
+            <li><strong>Binário:</strong> base 2, usada por computadores.</li>
+            <li><strong>Octal:</strong> base 8, útil em alguns sistemas.</li>
+            <li><strong>Hexadecimal:</strong> base 16, muito usada em programação.</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}
